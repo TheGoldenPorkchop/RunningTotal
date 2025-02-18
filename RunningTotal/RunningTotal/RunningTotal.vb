@@ -1,12 +1,15 @@
-﻿'header stuff
-Option Strict On
+﻿Option Strict On
 Option Explicit On
+'header stuff
+Imports System.Runtime.InteropServices
+
+
 
 'TO DO LIST
 '[X] Keep track of transactions in a Function called RunningTotal()
 '[X] Get the current total as needed
-'[ ] Provide a way to clear/zero the total
-'[ ] Display transaction and running total formatted as currency
+'[X] Provide a way to clear/zero the total
+'[X] Display transaction and running total formatted as currency
 '[ ] Siuper bonus: creat a method to include sales tax to the transaction
 Module RunningTotal
     Dim myGlobalNumberThing As Decimal
@@ -22,8 +25,8 @@ Module RunningTotal
             Else
                 Console.WriteLine($"you entered: {userInput}")
                 Try
-                    transNumber = CDec(userInput)
-                    Console.WriteLine("Your Vault has" & RunningTotal(transNumber))
+                    transNumber = CDec(userInput) * CDec(1.06)
+                    Console.WriteLine("Your Vault has: " & RunningTotal(transNumber).ToString("c"))
                 Catch ex As Exception
                     Console.WriteLine($"{userInput} is not a valid number")
                     Console.WriteLine($"Please enter a valid number")
